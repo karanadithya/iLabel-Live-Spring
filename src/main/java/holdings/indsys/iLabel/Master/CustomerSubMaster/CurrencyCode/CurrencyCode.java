@@ -1,4 +1,4 @@
-package holdings.indsys.iLabel.Master.CustomerSubMaster.State;
+package holdings.indsys.iLabel.Master.CustomerSubMaster.CurrencyCode;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,12 +13,13 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "State")
-public class State {
+@Document(collection = "CurrencyCode")
+public class CurrencyCode {
     @MongoId
     private ObjectId id;
     @Indexed(unique = true)
     private String code;
+    private String iso_code;
     private String description;
-    private String gst_state_code;
+
 }

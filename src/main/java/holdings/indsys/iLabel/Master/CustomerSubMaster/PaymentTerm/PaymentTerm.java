@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
@@ -16,10 +17,8 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 public class PaymentTerm {
     @MongoId
     private ObjectId id;
+    @Indexed(unique = true)
     private String code;
-    private String dueDateCalculation;
-    private String discountDateCalculation;
-    private String discountPercentage;
+    private String due_date;
     private String description;
-    private String calcPmtDiscOnCrMemos;
 }

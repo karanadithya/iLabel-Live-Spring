@@ -1,4 +1,4 @@
-package holdings.indsys.iLabel.Master.CustomerSubMaster.AssesseeCode;
+package holdings.indsys.iLabel.Master.CustomerSubMaster.GeneralBusinessPostingGroup;
 
 import holdings.indsys.iLabel.Master.CustomerSubMaster.Country.Country;
 import holdings.indsys.iLabel.Master.CustomerSubMaster.Country.CountryService;
@@ -13,18 +13,18 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/master/assessee-code")
-public class AssesseeCodeController {
+@RequestMapping("/api/v1/masters/customer-sub-master/businessPostingGroup")
+public class GeneralBusinessPostingGroupController {
 
-    private final AssesseeCodeService service;
+    private final GeneralBusinessPostingGroupService service;
 
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody AssesseeCode assesseeCode) {
-        return ResponseEntity.ok(service.addNew(assesseeCode));
+    public ResponseEntity<?> create(@RequestBody GeneralBusinessPostingGroup postingGroup) {
+        return ResponseEntity.ok(service.addNew(postingGroup));
     }
 
     @PostMapping()
-    public ResponseEntity<?> createMany(@RequestBody List<AssesseeCode> assesseeCodes) {
-        return ResponseEntity.ok(service.addMany(assesseeCodes));
+    public ResponseEntity<?> createMany(@RequestBody List<GeneralBusinessPostingGroup> postingGroup) {
+        return ResponseEntity.ok(service.addMany(postingGroup));
     }
 }

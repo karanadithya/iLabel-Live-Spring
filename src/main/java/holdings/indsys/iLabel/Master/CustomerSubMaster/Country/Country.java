@@ -2,6 +2,7 @@ package holdings.indsys.iLabel.Master.CustomerSubMaster.Country;
 
 import lombok.*;
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
@@ -12,12 +13,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 public class Country {
     @MongoId
     private ObjectId id;
+    @Indexed(unique = true)
     private String code;
     private String name;
-    private String isoCode;
-    private Number isoNumericCode;
-    private String eUCountryRegionCode;
-    private String intrastateCode;
-    private String addressFormat;
-    private String contactAddressFormat;
 }
