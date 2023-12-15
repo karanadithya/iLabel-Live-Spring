@@ -21,4 +21,10 @@ public class State {
     private String code;
     private String description;
     private String gst_state_code;
+
+    public State(String code, String description, String gst_state_code) {
+        this.code = code;
+        this.description = description;
+        this.gst_state_code = gst_state_code;
+    }
 }
