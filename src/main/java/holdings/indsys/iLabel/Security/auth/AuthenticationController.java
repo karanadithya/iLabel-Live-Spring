@@ -51,7 +51,7 @@ public class AuthenticationController {
      * @param authorizationHeader The Authorization header value.
      * @return A ResponseEntity containing the authentication result.
      */
-    @PostMapping("/authenticateByHeader")
+    @PostMapping("/APIAuthenticate")
     public ResponseEntity<?> authenticateByHeader(
             @RequestHeader(value = "Authorization") String authorizationHeader
     ) {
