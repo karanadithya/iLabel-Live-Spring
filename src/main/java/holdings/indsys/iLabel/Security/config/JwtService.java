@@ -1,5 +1,6 @@
 package holdings.indsys.iLabel.Security.config;
 
+import holdings.indsys.iLabel.Security.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -56,7 +57,7 @@ public class JwtService {
      * @param userDetails The user details.
      * @return The generated token.
      */
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(User userDetails) {
         // Call the overloaded generateToken method with an empty map
         return generateToken(new HashMap<>(), userDetails);
     }
@@ -68,7 +69,10 @@ public class JwtService {
      * @param userDetails the user details for whom the token is generated
      * @return the generated token
      */
-    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+    public String generateToken(Map<String, Object> extraClaims, User userDetails) {
+        extraClaims.put("firstName", userDetails.getFirstname());
+        extraClaims.put("lastName", userDetails.getLastname());
+        extraClaims.put("phoneNumber", userDetails.getPhoneNumber());
         return buildToken(extraClaims, userDetails, jwtExpiration);
     }
 
@@ -78,7 +82,7 @@ public class JwtService {
      * @param userDetails the user details
      * @return the refresh token
      */
-    public String generateRefreshToken(UserDetails userDetails) {
+    public String generateRefreshToken(User userDetails) {
         return buildToken(new HashMap<>(), userDetails, refreshExpiration);
     }
 
@@ -90,9 +94,10 @@ public class JwtService {
      * @param expiration  the expiration time in milliseconds
      * @return the JWT token as a string
      */
-    private String buildToken(Map<String, Object> extraClaims, UserDetails userDetails, long expiration) {
+    private String buildToken(Map<String, Object> extraClaims, User userDetails, long expiration) {
         // Create a new JWT builder
         JwtBuilder jwtBuilder = Jwts.builder();
+
 
         // Set the claims
         jwtBuilder.claims(extraClaims);
