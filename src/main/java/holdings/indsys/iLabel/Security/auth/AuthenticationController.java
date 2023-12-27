@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Base64;
+import java.util.Objects;
 
 @RestController
 @CrossOrigin("*")
@@ -83,10 +84,17 @@ public class AuthenticationController {
      * @return a ResponseEntity with the authentication result
      */
     @PostMapping("/otpLogin")
-    public ResponseEntity<?> authenticateByPhoneNumber(@RequestBody AuthenticationRequest request) {
+    public ResponseEntity<?> authenticateByPhoneNumber(@RequestBody AuthenticationRequestPhone request) {
         // Call the service to authenticate the user by phone number
         return ResponseEntity.ok(service.authenticateByPhone(request));
     }
+
+    @GetMapping("/sendOTP/{phoneNumber}")
+    public ResponseEntity<?> sendOTP(@PathVariable String phoneNumber) throws Exception {
+        // Call the service to authenticate the user by phone number
+        return ResponseEntity.ok(service.sendOTP(phoneNumber));
+    }
+
 
     /**
      * Refreshes the authentication token.
