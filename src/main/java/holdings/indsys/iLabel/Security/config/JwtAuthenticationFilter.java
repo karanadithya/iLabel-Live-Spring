@@ -25,54 +25,30 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
   private final UserDetailsService userDetailsService;
   private final TokenRepository tokenRepository;
 
-  /**
-   * This method is responsible for filtering incoming requests and handling authentication.
-   * If the request path contains "/api/v1/auth", the filter chain is not applied.
-   * Otherwise, the method checks for a valid JWT token in the request's Authorization header.
-   * If the token is valid, the user details are loaded and authentication is set in the security context.
-   * Finally, the filter chain is applied to the request.
-   *
-   * @param request       the incoming HTTP request
-   * @param response      the HTTP response
-   * @param filterChain  the chain of filters to be applied
-   * @throws ServletException if there is a servlet error
-   * @throws IOException      if there is an I/O error
-   */
   @Override
   protected void doFilterInternal(
           @NonNull HttpServletRequest request,
           @NonNull HttpServletResponse response,
           @NonNull FilterChain filterChain
   ) throws ServletException, IOException {
-    // Skip authentication for "/api/v1/auth" path
     if (request.getServletPath().contains("/api/v1/auth")) {
       filterChain.doFilter(request, response);
       return;
     }
-
     final String authHeader = request.getHeader("Authorization");
-
-    // Skip authentication if Authorization header is missing or doesn't start with "Bearer "
-    if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+    final String jwt;
+    final String userEmail;
+    if (authHeader == null ||!authHeader.startsWith("Bearer ")) {
       filterChain.doFilter(request, response);
       return;
     }
-
-    // Extract JWT token from Authorization header
-    final String jwt = authHeader.substring(7);
-
-    // Extract user email from JWT token
-    final String userEmail = jwtService.extractUsername(jwt);
-
-    // Set authentication if user email is not null and authentication is not already set
+    jwt = authHeader.substring(7);
+    userEmail = jwtService.extractUsername(jwt);
     if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
       UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
-
-      // Check if the token is valid and not expired or revoked
       var isTokenValid = tokenRepository.findByToken(jwt)
               .map(t -> !t.isExpired() && !t.isRevoked())
               .orElse(false);
-
       if (jwtService.isTokenValid(jwt, userDetails) && isTokenValid) {
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                 userDetails,
@@ -85,8 +61,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         SecurityContextHolder.getContext().setAuthentication(authToken);
       }
     }
-
-    // Apply the filter chain to the request
     filterChain.doFilter(request, response);
   }
 }
