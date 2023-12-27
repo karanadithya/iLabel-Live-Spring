@@ -24,6 +24,35 @@ public class SecurityConfiguration {
     private final AuthenticationProvider authenticationProvider;
     private final LogoutHandler logoutHandler;
 
+    /**
+     * Configures the web security filter chain with the following:
+     * - Disables CSRF protection for all requests
+     *
+     * - Allows unauthenticated access to certain endpoints:
+     *   - /api/v1/auth/**
+     *   - Swagger API docs endpoints
+     *   - Swagger UI endpoints
+     *
+     * - Requires authentication for any other request
+     *
+     * - Configures stateless session management
+     *
+     * - Adds a custom authentication provider bean
+     *
+     * - Adds a JWT authentication filter before the default username/password filter
+     *
+     * - Configures logout handling:
+     *   - Sets /api/v1/auth/logout as the logout URL
+     *   - Adds a logout handler
+     *   - Clears the security context on logout
+     *
+     * The commented code shows examples of configuring authorization for different
+     * roles/authorities for requests matching /api/v1/management/**
+     *
+     * @param http the HttpSecurity to configure
+     * @return the configured SecurityFilterChain
+     */
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
