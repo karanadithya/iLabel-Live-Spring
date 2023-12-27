@@ -30,6 +30,7 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private String phoneNumber;
+    private OTP otp;
 
     private Role role = Role.ADMIN;
 
