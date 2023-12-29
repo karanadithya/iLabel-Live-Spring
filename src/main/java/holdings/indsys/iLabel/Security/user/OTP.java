@@ -1,8 +1,6 @@
 package holdings.indsys.iLabel.Security.user;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 public class OTP {

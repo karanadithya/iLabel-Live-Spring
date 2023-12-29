@@ -32,7 +32,7 @@ public class User implements UserDetails {
     private String phoneNumber;
     private OTP otp;
 
-    private Role role = Role.ADMIN;
+    private Role role;
 
     private List<Token> tokens;
 

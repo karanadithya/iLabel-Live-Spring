@@ -1,7 +1,5 @@
 package holdings.indsys.iLabel.Master.CustomerSubMaster.GeneralBusinessPostingGroup;
 
-import holdings.indsys.iLabel.Master.CustomerSubMaster.PaymentTerm.PaymentTerm;
-import holdings.indsys.iLabel.Master.CustomerSubMaster.PaymentTerm.PaymentTermRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

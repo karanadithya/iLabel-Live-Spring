@@ -1,7 +1,5 @@
 package holdings.indsys.iLabel.Master.CustomerSubMaster.AssesseeCode;
 
-import holdings.indsys.iLabel.Master.CustomerSubMaster.Country.Country;
-import holdings.indsys.iLabel.Master.CustomerSubMaster.Country.CountryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,5 @@
 package holdings.indsys.iLabel.Master.CustomerSubMaster.CustomerPostingGroup;
 
-import holdings.indsys.iLabel.Master.CustomerSubMaster.State.State;
-import holdings.indsys.iLabel.Master.CustomerSubMaster.State.StateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
