@@ -1,7 +1,5 @@
 package holdings.indsys.iLabel.Master.Item;
 
-import holdings.indsys.iLabel.Master.Customer.Customer;
-import holdings.indsys.iLabel.Quote;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +13,7 @@ import java.util.List;
 public class ItemController {
 
     private final ItemService itemService;
+
     /**
      * Create a new item.
      *

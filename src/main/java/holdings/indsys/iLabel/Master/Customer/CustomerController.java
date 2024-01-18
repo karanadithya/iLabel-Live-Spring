@@ -1,6 +1,5 @@
 package holdings.indsys.iLabel.Master.Customer;
 
-import holdings.indsys.iLabel.Quote;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
