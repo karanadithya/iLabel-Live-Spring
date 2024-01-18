@@ -22,4 +22,9 @@ public class StateController {
     public ResponseEntity<?> createStateMany(@RequestBody List<State> state) {
         return ResponseEntity.ok(service.addNewStateMany(state));
     }
+
+    @GetMapping("all")
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
 }

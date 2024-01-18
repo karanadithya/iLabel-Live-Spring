@@ -23,4 +23,9 @@ public class CountryController {
     public ResponseEntity<?> createMany(@RequestBody List<Country> country) {
         return ResponseEntity.ok(service.addMany(country));
     }
+
+    @GetMapping("all")
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
 }

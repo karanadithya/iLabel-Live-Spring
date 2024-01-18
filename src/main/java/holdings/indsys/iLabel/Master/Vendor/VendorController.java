@@ -40,5 +40,10 @@ public class VendorController {
         return ResponseEntity.ok(service.addMany(vendors));
     }
 
+    @GetMapping("all")
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
+
 
 }

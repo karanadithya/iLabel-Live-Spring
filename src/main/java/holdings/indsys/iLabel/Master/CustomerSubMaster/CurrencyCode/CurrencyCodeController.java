@@ -22,4 +22,9 @@ public class CurrencyCodeController {
     public ResponseEntity<?> createMany(@RequestBody List<CurrencyCode> currencyCode) {
         return ResponseEntity.ok(service.addMany(currencyCode));
     }
+
+    @GetMapping("all")
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
 }

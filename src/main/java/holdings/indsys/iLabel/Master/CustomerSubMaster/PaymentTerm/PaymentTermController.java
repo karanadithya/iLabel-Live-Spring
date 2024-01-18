@@ -23,4 +23,9 @@ public class PaymentTermController {
     public ResponseEntity<?> createStateMany(@RequestBody List<PaymentTerm> paymentTerm) {
         return ResponseEntity.ok(service.addMany(paymentTerm));
     }
+
+    @GetMapping("all")
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
 }

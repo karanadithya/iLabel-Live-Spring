@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
                         name = "Indsys",
                         email = "karan@indsys.holdings"
                 ),
-                description = "OpenApi documentation for Spring Security",
+                description = "OpenApi documentation for iLabel Live",
                 title = "OpenApi specification - iLabel",
                 version = "1.0",
 //                license = @License(

@@ -23,4 +23,9 @@ public class GeneralBusinessPostingGroupController {
     public ResponseEntity<?> createMany(@RequestBody List<GeneralBusinessPostingGroup> postingGroup) {
         return ResponseEntity.ok(service.addMany(postingGroup));
     }
+
+    @GetMapping("all")
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
 }

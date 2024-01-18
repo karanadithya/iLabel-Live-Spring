@@ -1,8 +1,10 @@
 package holdings.indsys.iLabel.Master.Customer;
 
+import holdings.indsys.iLabel.Quote;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -13,6 +15,7 @@ import java.util.List;
 public class CustomerController {
 
     private final CustomerService service;
+    private final RestTemplate restTemplate;
 
     /**
      * Create a new customer.
@@ -37,4 +40,11 @@ public class CustomerController {
         // Return the response entity with the result of the create operation
         return ResponseEntity.ok(service.addMany(customers));
     }
+
+    @GetMapping("all")
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
+
+
 }

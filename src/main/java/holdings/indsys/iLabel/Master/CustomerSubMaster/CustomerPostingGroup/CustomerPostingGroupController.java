@@ -23,4 +23,9 @@ public class CustomerPostingGroupController {
     public ResponseEntity<?> createStateMany(@RequestBody List<CustomerPostingGroup> customerPostingGroup) {
         return ResponseEntity.ok(service.addMany(customerPostingGroup));
     }
+
+    @GetMapping("all")
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.ok(service.getAll());
+    }
 }

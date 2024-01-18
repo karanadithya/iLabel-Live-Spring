@@ -12,7 +12,7 @@ public class StateService {
 
     private final StateRepository repository;
 
-    public List<State> getAllStates() {
+    public List<State> getAll() {
         return repository.findAll();
     }
 

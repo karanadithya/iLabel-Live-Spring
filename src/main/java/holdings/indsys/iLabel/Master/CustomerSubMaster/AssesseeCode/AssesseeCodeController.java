@@ -23,4 +23,10 @@ public class AssesseeCodeController {
     public ResponseEntity<?> createMany(@RequestBody List<AssesseeCode> assesseeCodes) {
         return ResponseEntity.ok(service.addMany(assesseeCodes));
     }
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAll() {
+        List<AssesseeCode> assesseeCodes = service.getAll();
+        return ResponseEntity.ok(assesseeCodes);
+    }
 }

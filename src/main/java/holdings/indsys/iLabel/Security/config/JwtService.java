@@ -41,7 +41,8 @@ public class JwtService {
      * Extracts a claim from a token using a claims resolver function.
      *
      * @param token          The token to extract the claim from.
-     * @param claimsResolver The function that resolves the claim from the token's claims.
+     * @param claimsResolver The function that resolves the claim from the token's
+     *                       claims.
      * @return The resolved claim.
      */
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
@@ -88,7 +89,8 @@ public class JwtService {
     }
 
     /**
-     * Builds a JWT token with the given extra claims, user details, and expiration time.
+     * Builds a JWT token with the given extra claims, user details, and expiration
+     * time.
      *
      * @param extraClaims the additional claims to include in the token
      * @param userDetails the user details of the authenticated user
@@ -98,7 +100,6 @@ public class JwtService {
     private String buildToken(Map<String, Object> extraClaims, User userDetails, long expiration) {
         // Create a new JWT builder
         JwtBuilder jwtBuilder = Jwts.builder();
-
 
         // Set the claims
         jwtBuilder.claims(extraClaims);
@@ -161,7 +162,6 @@ public class JwtService {
         return extractClaim(token, Claims::getExpiration);
     }
 
-
     /**
      * Extracts all claims from the given JWT token.
      *
@@ -177,7 +177,6 @@ public class JwtService {
                 .parseSignedClaims(token)
                 .getPayload();
     }
-
 
     /**
      * Retrieves the sign-in key for authentication.
