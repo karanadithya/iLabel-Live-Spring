@@ -1,5 +1,6 @@
 package holdings.indsys.iLabel.Master.Customer;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +12,12 @@ import java.util.List;
 @CrossOrigin("*")
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/masters/customer")
+@Tag(name = "Customer", description = "Customer API")
 public class CustomerController {
 
     private final CustomerService service;
-    private final RestTemplate restTemplate;
+    private final RestTemplate
+            restTemplate;
 
     /**
      * Create a new customer.

@@ -13,8 +13,9 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @OpenAPIDefinition(
         info = @Info(
                 contact = @Contact(
-                        name = "Indsys",
-                        email = "karan@indsys.holdings"
+                        name = "Sainmarks",
+                        email = "karan@indsys.holdings",
+                        url = "https://sainmarks.com/"
                 ),
                 description = "OpenApi documentation for iLabel Live",
                 title = "OpenApi specification - iLabel",
@@ -31,7 +32,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
                         url = "http://localhost:9000"
                 ),
                 @Server(
-                        description = "PROD ENV",
+                        description = "Testing ENV",
                         url = "http://http://13.235.164.82:9000"
                 )
         },
