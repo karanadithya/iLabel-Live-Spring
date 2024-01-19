@@ -1,4 +1,9 @@
 package holdings.indsys.iLabel.Master.ItemSubMaster.HsnSac;
 
-public interface HsnSacRepository {
+import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface HsnSacRepository extends MongoRepository<HsnSac, ObjectId> {
 }

@@ -1,21 +1,13 @@
-package holdings.indsys.iLabel.Master.ItemSubMaster.RoutingLine;
+package holdings.indsys.iLabel.Master.ItemSubMaster.RoutingLine.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Document(value = "RoutingLine")
-public class RoutingLine {
-
-    @MongoId
+public class RoutingLineRequest {
     private ObjectId id;
     private String routingNo;
     private String versionCode;
