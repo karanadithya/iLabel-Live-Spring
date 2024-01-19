@@ -1,5 +1,8 @@
 package holdings.indsys.iLabel.Security.auth;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +16,7 @@ import java.util.Base64;
 @CrossOrigin("*")
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@Tag(name = "Authentication", description = "Authentication API")
 public class AuthenticationController {
 
     private final AuthenticationService service;
@@ -76,18 +80,29 @@ public class AuthenticationController {
         return ResponseEntity.ok(service.authenticate(request));
     }
 
+    // TODO:: Delete old access tokens in DB
     /**
      * Authenticates a user by their phone number using OTP.
      *
      * @param request the authentication request containing the user's phone number and OTP code
      * @return a ResponseEntity with the authentication result
      */
+    @Operation(description = "OTP Authentication", summary = "Authenticate user by phone number using OTP")
     @PostMapping("/otpLogin")
     public ResponseEntity<?> authenticateByPhoneNumber(@RequestBody AuthenticationRequestPhone request) {
         // Call the service to authenticate the user by phone number
         return ResponseEntity.ok(service.authenticateByPhone(request));
     }
 
+
+    @Operation(
+            description = "Send OTP",
+            summary = "Send OTP",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "OTP sent successfully"),
+                    @ApiResponse(responseCode = "403", description = "Unauthorized")
+            }
+    )
     @GetMapping("/sendOTP/{phoneNumber}")
     public ResponseEntity<?> sendOTP(@PathVariable String phoneNumber) throws Exception {
         // Call the service to authenticate the user by phone number

@@ -1,6 +1,8 @@
 package holdings.indsys.iLabel.advice;
 
+import com.mongodb.DuplicateKeyException;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
@@ -16,6 +18,7 @@ import java.nio.file.AccessDeniedException;
 import java.security.SignatureException;
 
 @RestControllerAdvice
+@Hidden
 public class CustomExceptionHandler {
 
 
@@ -114,4 +117,5 @@ public class CustomExceptionHandler {
         problemDetail.setProperty("message", "Something went wrong");
         return problemDetail;
     }
+
 }

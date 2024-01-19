@@ -1,5 +1,6 @@
 package holdings.indsys.iLabel.Master.CustomerSubMaster.AssesseeCode;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import java.util.List;
 @CrossOrigin("*")
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/master/assessee-code")
+@Tag(name = "AssesseeCode", description = "AssesseeCode API")
 public class AssesseeCodeController {
 
     private final AssesseeCodeService service;

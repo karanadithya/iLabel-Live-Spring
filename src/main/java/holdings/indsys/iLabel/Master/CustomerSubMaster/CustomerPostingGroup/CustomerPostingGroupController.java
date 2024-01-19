@@ -1,5 +1,6 @@
 package holdings.indsys.iLabel.Master.CustomerSubMaster.CustomerPostingGroup;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import java.util.List;
 @CrossOrigin("*")
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/master/customer-posting-group")
+@Tag(name = "Customer Posting Group")
 public class CustomerPostingGroupController {
 
     private final CustomerPostingGroupService service;
