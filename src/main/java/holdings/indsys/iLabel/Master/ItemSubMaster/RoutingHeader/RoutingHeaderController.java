@@ -1,6 +1,7 @@
 package holdings.indsys.iLabel.Master.ItemSubMaster.RoutingHeader;
 
 import holdings.indsys.iLabel.Master.ItemSubMaster.RoutingHeader.dto.RoutingHeaderRequest;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,8 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/masters/items/routingHeader")
+@RequestMapping("/api/v1/masters/itemSubMaster/routingHeader")
+@Tag(name = "Routing Header" , description = "Item Sub Master - Routing Header")
 public class RoutingHeaderController {
 
     private final RoutingHeaderService service;
@@ -21,7 +23,7 @@ public class RoutingHeaderController {
         return ResponseEntity.ok(service.addNew(request));
     }
 
-    @PostMapping("/bulk")
+    @PostMapping("/all")
     public ResponseEntity<?> createMany(@RequestBody List<RoutingHeaderRequest> request) {
         return ResponseEntity.ok(service.addMany(request));
     }
@@ -31,7 +33,7 @@ public class RoutingHeaderController {
         return ResponseEntity.ok(service.update(request));
     }
 
-    @GetMapping("/all")
+    @GetMapping()
     public ResponseEntity<?> getAll() {
         return ResponseEntity.ok(service.getAll());
     }

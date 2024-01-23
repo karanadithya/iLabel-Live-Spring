@@ -4,6 +4,10 @@ import holdings.indsys.iLabel.Master.ItemSubMaster.UnitOfMeasure.dto.UnitOfMeasu
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -64,4 +68,12 @@ public class UnitOfMeasureService {
         log.info("UnitOfMeasure {} deleted successfully", id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    public ResponseEntity<Page<UnitOfMeasure>> getPaginated(int pageNo, int pageSize) {
+
+        Sort sort = Sort.by(Sort.Direction.DESC, "code");
+        Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
+        return new ResponseEntity<>(repository.findAll(pageable), HttpStatus.OK);
+    }
+
 }
